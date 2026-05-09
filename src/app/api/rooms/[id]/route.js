@@ -29,3 +29,17 @@ export async function PUT(request, { params }) {
     return NextResponse.json({ error: 'Failed to update room' }, { status: 500 });
   }
 }
+
+export async function DELETE(request, { params }) {
+  try {
+    const session = await getServerSession(authOptions);
+    if (!session || session.user.role !== 'ADMIN') {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+    const { id } = await params;
+    await prisma.room.delete({ where: { id } });
+    return NextResponse.json({ message: 'Room deleted' });
+  } catch (error) {
+    return NextResponse.json({ error: 'Failed to delete room' }, { status: 500 });
+  }
+}
