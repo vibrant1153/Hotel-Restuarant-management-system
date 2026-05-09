@@ -14,3 +14,18 @@ export async function GET(request, {params}){
     return NextResponse.json({ error: 'Failed to fetch room' }, { status: 500 });
   }
 }
+
+export async function PUT(request, { params }) {
+  try {
+    const session = await getServerSession(authOptions);
+    if (!session || session.user.role !== 'ADMIN') {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+    const { id } = await params;
+    const data = await request.json();
+    const room = await prisma.room.update({ where: { id }, data });
+    return NextResponse.json(room);
+  } catch (error) {
+    return NextResponse.json({ error: 'Failed to update room' }, { status: 500 });
+  }
+}
