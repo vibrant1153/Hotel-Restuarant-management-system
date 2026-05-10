@@ -20,3 +20,18 @@ export async function GET(request) {
     return NextResponse.json({ error: 'Failed to fetch rooms' }, { status: 500 });
   }
 }
+
+
+export async function POST(request) {
+  try {
+    const session = await getServerSession(authOptions);
+    if (!session || session.user.role !== 'ADMIN') {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+    const data = await request.json();
+    const room = await prisma.room.create({ data });
+    return NextResponse.json(room, { status: 201 });
+  } catch (error) {
+    return NextResponse.json({ error: 'Failed to create room' }, { status: 500 });
+  }
+}
