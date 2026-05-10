@@ -5,7 +5,7 @@ import bcrypt from 'bcryptjs';
 import { prisma } from './prisma';
 
 export const authOptions = {
-    adapter: PrismaAdapter(prisma),
+    adapter: PrismaAdapter(prisma),//store and manage user, account, session in database 
 
     providers: [
     GoogleProvider({
