@@ -16,3 +16,19 @@ export async function GET(request){
     return NextResponse.json({ error: 'Failed to fetch food items' }, { status: 500 });
   }
 }
+
+export async function POST(request){
+    try{
+        const session = await getServerSession(authOptions);
+        if (!session || session.user.role !== 'ADMIN') {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+      const data = await request.json();
+      const item = await prisma.foodItem.create({ data });
+      return NextResponse.json(item, { status: 201 });
+    }catch{
+        return NextResponse.json({ error: 'Failed to create food item' }, { status: 500 });
+
+    }
+}
