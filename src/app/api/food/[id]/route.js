@@ -28,3 +28,17 @@ export async function PUT(request, { params }) {
     return NextResponse.json({ error: 'Failed to update food item' }, { status: 500 });
   }
 }
+
+export async function DELETE(request, { params }) {
+  try {
+    const session = await getServerSession(authOptions);
+    if (!session || session.user.role !== 'ADMIN') {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+    const { id } = await params;
+    await prisma.foodItem.delete({ where: { id } });
+    return NextResponse.json({ message: 'Food item deleted' });
+  } catch (error) {
+    return NextResponse.json({ error: 'Failed to delete food item' }, { status: 500 });
+  }
+}
