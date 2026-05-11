@@ -19,12 +19,18 @@ export const authOptions = {
         password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials) {
+
+        console.log(credentials)// debugging 
+        
         if (!credentials?.email || !credentials?.password) {
           throw new Error('Please enter your email and password');
         }
         const user = await prisma.user.findUnique({
           where: { email: credentials.email },
         });
+
+        console.log(user);// debugging 
+
         if (!user || !user.hashedPassword) {
           throw new Error('No account found with this email');
         }
