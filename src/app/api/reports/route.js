@@ -32,6 +32,6 @@ export async function GET(){
       revenueByType, recentOrders,});
     
     }catch{
-
+         return NextResponse.json({ error: 'Failed to generate reports' }, { status: 500 });
     }
 }
