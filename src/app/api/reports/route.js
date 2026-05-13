@@ -18,6 +18,13 @@ export async function GET(){
       prisma.foodOrder.findMany({ select: { items: true } }),
       prisma.foodOrder.findMany({ take: 5, orderBy: { createdAt: 'desc' }, include: { user: { select: { name: true } } } }),
     ]);
+
+
+    const availableRooms = roomsByStatus.find(r => r.status === 'AVAILABLE')?._count || 0;
+    const occupiedRooms = roomsByStatus.find(r => r.status === 'OCCUPIED')?._count || 0;
+    const occupancyRate = totalRooms > 0 ? Math.round((occupiedRooms / totalRooms) * 100) : 0;
+
+    const revenueByType = roomsByType.map(r => ({ type: r.type, count: r._count, avgPrice: Math.round(r._avg.price || 0) }));
     }
     }catch{
 
