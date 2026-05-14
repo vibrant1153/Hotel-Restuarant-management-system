@@ -25,7 +25,7 @@ export default function Navbar(){
   ];
 
   return (
-  <nav>
+  <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`>
     <div>
          <Link href="/" className="navbar__logo">
           <span className="navbar__logo-text">AURALIS</span>
@@ -74,7 +74,7 @@ export default function Navbar(){
             {menuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
-        
+
     </div>
   </nav>
   )
