@@ -24,5 +24,14 @@ export default function Navbar(){
     { href: '/food', label: 'Dining' },
   ];
 
-  return (<nav/>)
+  return (
+  <nav>
+    <div>
+         <Link href="/" className="navbar__logo">
+          <span className="navbar__logo-text">AURALIS</span>
+          <span className="navbar__logo-sub">LUXURY HOTEL & RESORT</span>
+        </Link>
+    </div>
+  </nav>
+  )
 }
