@@ -31,6 +31,19 @@ export default function Navbar(){
           <span className="navbar__logo-text">AURALIS</span>
           <span className="navbar__logo-sub">LUXURY HOTEL & RESORT</span>
         </Link>
+
+         <div className={`navbar__links ${menuOpen ? 'navbar__links--open' : ''}`}>
+          {links.map(l => (
+            <Link key={l.href} href={l.href} className={`navbar__link ${pathname === l.href ? 'navbar__link--active' : ''}`} onClick={() => setMenuOpen(false)}>
+              {l.label}
+            </Link>
+          ))}
+          {session && (
+            <Link href="/profile" className={`navbar__link ${pathname === '/profile' ? 'navbar__link--active' : ''}`} onClick={() => setMenuOpen(false)}>
+              My Profile
+            </Link>
+          )}
+        </div>
     </div>
   </nav>
   )
