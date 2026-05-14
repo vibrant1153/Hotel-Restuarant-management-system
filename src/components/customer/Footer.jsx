@@ -25,8 +25,8 @@ export default function Navbar(){
   ];
 
   return (
-  <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`>
-    <div>
+  <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
+    <div className="navbar__inner container">
          <Link href="/" className="navbar__logo">
           <span className="navbar__logo-text">AURALIS</span>
           <span className="navbar__logo-sub">LUXURY HOTEL & RESORT</span>
