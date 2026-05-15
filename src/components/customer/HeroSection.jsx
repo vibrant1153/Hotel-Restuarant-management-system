@@ -28,6 +28,19 @@ export default function HeroSection(){
           <div className="hero__scroll-dot" />
         </motion.div>
       </div>
+
+      <style jsx>{`
+        .hero { position:relative; min-height:100vh; display:flex; align-items:center; overflow:hidden; }
+        .hero__bg { position:absolute; inset:0; background:url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1920&q=80') center/cover; }
+        .hero__bg::after { content:''; position:absolute; inset:0; background:linear-gradient(135deg, rgba(7,15,29,0.88) 0%, rgba(11,30,58,0.75) 50%, rgba(7,15,29,0.9) 100%); }
+        .hero__content { position:relative; z-index:2; max-width:700px; padding-top:80px; }
+        .hero__stars { display:flex; gap:4px; margin-bottom:16px; }
+        .hero__title { font-size:clamp(2.8rem,6vw,4.5rem); font-weight:700; line-height:1.1; margin-bottom:20px; letter-spacing:-0.02em; }
+        .hero__sub { font-size:1.1rem; color:var(--cool-gray); line-height:1.8; margin-bottom:32px; max-width:540px; }
+        .hero__cta { display:flex; gap:16px; flex-wrap:wrap; }
+        .hero__scroll-indicator { position:absolute; bottom:40px; left:50%; transform:translateX(-50%); z-index:2; }
+        .hero__scroll-dot { width:6px; height:6px; border-radius:50%; background:var(--gold); }
+      `}</style>
         </section>
     )
 }
