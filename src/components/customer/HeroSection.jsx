@@ -5,9 +5,11 @@ import { Star, ArrowRight } from 'lucide-react';
 
 export default function HeroSection(){
     return(
-        <section>
+        <section className="hero">
+
             <div className="hero__bg" />
-           <div>
+
+           <div className="hero__content container">
                 <motion.div initial={{ opacity:0, y:40 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.8, ease:[0.22,1,0.36,1] }}>
           <div className="hero__stars">
             {[...Array(5)].map((_,i) => <Star key={i} size={14} fill="var(--gold)" color="var(--gold)" />)}
@@ -20,6 +22,12 @@ export default function HeroSection(){
           </div>
         </motion.div>
             </div> 
+
+            <div className="hero__scroll-indicator">
+        <motion.div animate={{ y:[0,8,0] }} transition={{ repeat:Infinity, duration:1.5 }}>
+          <div className="hero__scroll-dot" />
+        </motion.div>
+      </div>
         </section>
     )
 }
