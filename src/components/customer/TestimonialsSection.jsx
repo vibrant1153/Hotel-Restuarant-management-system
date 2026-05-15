@@ -8,3 +8,12 @@ const testimonials = [
   { name: 'Sophia Laurent', role: 'Fashion Designer', text: 'The attention to detail is unparalleled. I felt like royalty throughout my entire stay at Auralis.', rating: 5 },
   { name: 'Alexander Reid', role: 'Film Director', text: 'A sanctuary of sophistication. The spa and ocean views made this my most memorable retreat.', rating: 5 },
 ];
+
+export default function TestimonialsSection(){
+    const [current, setCurrent] = useState(0);
+  useEffect(() => {
+    const timer = setInterval(() => setCurrent(p => (p + 1) % testimonials.length), 5000);
+    return () => clearInterval(timer);
+  }, []);
+  const t = testimonials[current];
+}
