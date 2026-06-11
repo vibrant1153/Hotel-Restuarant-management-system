@@ -471,3 +471,126 @@ textarea.input { resize: vertical; min-height: 100px; }
   z-index: 5;
 }
 
+/* ═══════════════════════════════════════════════════════════════
+   AURALIS ADMIN SIDEBAR — Navigation Styling
+   ═══════════════════════════════════════════════════════════════ */
+.sidebar {
+  width: 260px;
+  min-height: 100vh;
+  background: var(--navy-dark);
+  border-right: 1px solid rgba(212, 175, 55, 0.12);
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s var(--ease-out);
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 50;
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.3);
+}
+
+.sidebar--collapsed {
+  width: 72px;
+}
+
+.sidebar__header {
+  padding: 24px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.08);
+}
+
+.sidebar__brand {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none !important;
+}
+
+.sidebar__logo {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 6px;
+  transition: opacity 0.2s;
+  line-height: 1.2;
+}
+
+.sidebar__sub {
+  font-size: 0.55rem;
+  color: var(--cool-gray);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.sidebar__toggle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  background: rgba(18, 43, 79, 0.6);
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-out);
+  outline: none;
+}
+
+.sidebar__toggle:hover {
+  background: var(--gold);
+  color: var(--navy-dark);
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
+}
+
+.sidebar__nav {
+  padding: 28px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+.sidebar__link {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 18px;
+  border-radius: var(--radius-md);
+  color: var(--cool-gray) !important;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.25s var(--ease-out);
+  text-decoration: none !important;
+  outline: none;
+  border: 1px solid transparent;
+}
+
+.sidebar__link:hover {
+  background: rgba(212, 175, 55, 0.08);
+  color: var(--warm-white) !important;
+  transform: translateX(6px);
+}
+
+.sidebar__link--active {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.18) 0%, rgba(212, 175, 55, 0.05) 100%);
+  color: var(--gold) !important;
+  font-weight: 600;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.sidebar__link svg {
+  transition: transform 0.25s var(--ease-out);
+}
+
+.sidebar__link:hover svg {
+  transform: scale(1.1);
+}
+
+.sidebar__link--active svg {
+  color: var(--gold);
+}
